@@ -20,8 +20,11 @@ public class ItemSlot : MonoBehaviour
             itemCount = value;
         }
     }
-
+    public Item item;
     public Slot[] slotsInUse;
+
+    private int columns;
+    private int rows;
 
     void Start()
     {

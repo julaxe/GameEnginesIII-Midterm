@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Slot : MonoBehaviour
 {
+ 
     [SerializeField]
     private TMPro.TextMeshProUGUI itemCountText;
     [SerializeField]
@@ -12,10 +14,18 @@ public class Slot : MonoBehaviour
 
     public Item itemInSlot = null;
     //connection to the other itemslots.
-    public Dictionary<string, ItemSlot> NeighboorsItemSlots;
+    public Dictionary<string, GameObject> NeighboorsSlots;
     public bool root = false; //image
     public bool tail = false; //text
-
+    private void Awake()
+    {
+        NeighboorsSlots = new Dictionary<string, GameObject>();
+    }
+    private void Start()
+    {
+        itemCountText = transform.Find("ItemCount").GetComponent<TMPro.TextMeshProUGUI>();
+        icon = transform.Find("Icon").GetComponent<Image>();
+    }
     public void RefreshNumberOfItems(int ItemCount)
     {
         if(tail)
