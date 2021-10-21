@@ -28,6 +28,9 @@ public class Item : ScriptableObject
 
     public Sprite icon;
     public bool isConsumable = true;
+    [Header("Space on grid")]
+    public int columns = 1;
+    public int rows = 1;
 
     //returns whether or not the Item was successfully used
     public bool Use()
