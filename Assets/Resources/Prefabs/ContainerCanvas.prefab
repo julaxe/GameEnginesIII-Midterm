@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 5395119485459324784}
   - component: {fileID: 5395119485459324787}
   - component: {fileID: 5395119485459324780}
+  - component: {fileID: 46509721766076232}
   m_Layer: 5
   m_Name: InventoryBackgroundContainer
   m_TagString: Untagged
@@ -340,6 +341,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &46509721766076232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395119485459324790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a7267eed850f5d4ca55119342204bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfItems: []
 --- !u!1 &5395119485825406440
 GameObject:
   m_ObjectHideFlags: 0

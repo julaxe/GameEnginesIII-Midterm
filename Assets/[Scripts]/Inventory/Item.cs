@@ -39,7 +39,10 @@ public class Item : MonoBehaviour
             itemTemplate = value;
             //update
             Debug.Log("item changed for something else");
-            RefreshItem();
+            if(icon)
+            {
+                RefreshItem();
+            }
         }
     }
 
@@ -62,7 +65,10 @@ public class Item : MonoBehaviour
         previousSlots = new List<Slot>();
         boxcollider = GetComponent<BoxCollider2D>();
         icon = GetComponent<Image>();
-        ItemTemplate = Resources.Load<ItemTemplate>("Items/Sword");
+        if(ItemTemplate)
+        {
+            RefreshItem();
+        }
     }
 
     private void Update()
@@ -87,6 +93,7 @@ public class Item : MonoBehaviour
     public void RefreshItem()
     {
         // get all the values when the item is change
+        
         icon.sprite = ItemTemplate.icon;
         //new size
         width = 100 * ItemTemplate.columns;
@@ -96,6 +103,7 @@ public class Item : MonoBehaviour
         boxcollider.size = new Vector2(width - 20, height - 20);
 
         numberOfSlots = ItemTemplate.columns * ItemTemplate.rows;
+        
     }
   
     private void OnTriggerEnter2D(Collider2D collision)
@@ -140,17 +148,16 @@ public class Item : MonoBehaviour
             }
             //if I'm here it means that the slots are available, so set the item.
             //also get the min,max for rows and columns.
+            DeleteOldBag();
             ClearPreviousSlots();
-            SetNewSlots();
-            SetPositionWithSlots(slotsInUse);
-
+            AddToBag();
         }
         else
         {
             GoBackToPreviousPosition();
         }
     }
-    private void GoBackToPreviousPosition()
+    public void GoBackToPreviousPosition()
     {
         if(previousSlots.Count>1)
         {
@@ -179,6 +186,19 @@ public class Item : MonoBehaviour
             slot.Item = null;
         }
         previousSlots.Clear();
+    }
+    private void AddToBag()
+    {
+        slotsInUse[0].bag.AddNewItem(this);
+        SetNewSlots();
+        SetPositionWithSlots(slotsInUse);
+    }
+    private void DeleteOldBag()
+    {
+        if(previousSlots.Count>1)
+        {
+            previousSlots[0].bag.DeleteFromlist(this);
+        }
     }
     private void SetNewSlots()
     {

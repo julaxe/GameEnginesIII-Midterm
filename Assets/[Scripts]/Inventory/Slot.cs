@@ -9,12 +9,11 @@ public class Slot : MonoBehaviour
  
     [SerializeField]
     private TMPro.TextMeshProUGUI itemCountText;
-    [SerializeField]
-    private Image icon;
 
     [SerializeProperty("Item")]
     private Item itemInSlot = null;
 
+    public Bag bag;
    
     public Item Item
     {
@@ -43,16 +42,11 @@ public class Slot : MonoBehaviour
         }
         set
         {
-            if(root == value)
+            if (root == value)
             {
                 return;
             }
             root = value;
-            //refresh image
-            if(root)
-            {
-                
-            }
         }
     }
     private bool tail;
@@ -86,7 +80,6 @@ public class Slot : MonoBehaviour
     private void Start()
     {
         itemCountText = transform.Find("ItemCount").GetComponent<TMPro.TextMeshProUGUI>();
-        icon = transform.Find("Icon").GetComponent<Image>();
         cllider = transform.Find("CollisionBox").gameObject;
 
     }
@@ -108,7 +101,8 @@ public class Slot : MonoBehaviour
 
     void RefreshItem()
     {
-       if(!itemInSlot)
+        RefreshNumberOfItems();
+        if (!itemInSlot)
        {
             cllider.GetComponent<Image>().color = new Color(0.8584906f, 0.8584906f, 0.8584906f, 0.8117647f);
         }
