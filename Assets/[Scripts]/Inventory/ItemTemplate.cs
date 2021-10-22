@@ -11,11 +11,12 @@ class ItemModifiedException : System.Exception
 
 //Attribute that allows us to right click->create
 [CreateAssetMenu(fileName = "NewItem", menuName = "ItemSystem/Item")]
-public class Item : ScriptableObject
+public class ItemTemplate : ScriptableObject
 {
     public new string name = "item";
     public string description = "this is an item";
-    
+    public int amount = 1;
+
     private int id = -1;
     public int Id
     {
@@ -31,6 +32,7 @@ public class Item : ScriptableObject
     [Header("Space on grid")]
     public int columns = 1;
     public int rows = 1;
+    
 
     //returns whether or not the Item was successfully used
     public bool Use()

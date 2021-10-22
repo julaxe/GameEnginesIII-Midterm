@@ -29,32 +29,11 @@ public class ItemSlotGridDimensioner : MonoBehaviour
             for(int j = 0; j < rows; j++)
             {
                 listSlots[i, j] = Instantiate(itemSlotPrefab, this.transform);
-            }
-        }
-        ConnectAllSlots();
-    }
-
-    void ConnectAllSlots()
-    {
-        for (int i = 0; i < columns; i++)
-        {
-            for (int j = 0; j < rows; j++)
-            {
-                ConnectSlot(i, j, i - 1, j, "left");
-                ConnectSlot(i, j, i + 1, j, "right");
-                ConnectSlot(i, j, i, j-1, "top");
-                ConnectSlot(i, j, i, j+1, "bottom");
+                listSlots[i, j].GetComponent<Slot>().column = i;
+                listSlots[i, j].GetComponent<Slot>().row = j;
             }
         }
     }
-    void ConnectSlot(int acutalI, int actualJ, int i, int j, string direction)
-    {
-        if(i < 0 || i>= columns || j < 0 || j >= rows)// outside the grid set the direction to null
-        {
-            listSlots[acutalI, actualJ].GetComponent<Slot>().NeighboorsSlots.Add(direction, null);
-            return;
-        }
-        listSlots[acutalI, actualJ].GetComponent<Slot>().NeighboorsSlots.Add(direction, listSlots[i, j]);
 
-    }
+    
 }
