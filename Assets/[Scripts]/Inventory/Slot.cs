@@ -73,6 +73,7 @@ public class Slot : MonoBehaviour
 
     private GameObject cllider;
 
+    //possition in the grid
     public int row;
     public int column;
 
@@ -80,7 +81,9 @@ public class Slot : MonoBehaviour
     private void Start()
     {
         itemCountText = transform.Find("ItemCount").GetComponent<TMPro.TextMeshProUGUI>();
+        //this is just for debuggin purposes.
         cllider = transform.Find("CollisionBox").gameObject;
+        RefreshItem();
 
     }
     public void RefreshNumberOfItems()
@@ -99,7 +102,7 @@ public class Slot : MonoBehaviour
         }
     }
 
-    void RefreshItem()
+    public void RefreshItem()
     {
         RefreshNumberOfItems();
         if (!itemInSlot)

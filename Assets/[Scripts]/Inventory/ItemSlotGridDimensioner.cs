@@ -13,14 +13,12 @@ public class ItemSlotGridDimensioner : MonoBehaviour
     Vector2Int GridDimensions = new Vector2Int(6, 6);
     [SerializeField]
     GameObject [,] listSlots;
-    private Bag bag;
 
     private int rows;
     private int columns;
 
     void Start()
     {
-        bag = GetComponent<Bag>();
         int numCells = GridDimensions.x * GridDimensions.y;
         rows = GridDimensions.y;
         columns = GridDimensions.x;
@@ -33,7 +31,6 @@ public class ItemSlotGridDimensioner : MonoBehaviour
                 listSlots[i, j] = Instantiate(itemSlotPrefab, this.transform);
                 listSlots[i, j].GetComponent<Slot>().column = i;
                 listSlots[i, j].GetComponent<Slot>().row = j;
-                listSlots[i, j].GetComponent<Slot>().bag = bag;
             }
         }
     }

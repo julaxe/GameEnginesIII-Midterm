@@ -21,8 +21,8 @@ public class Item : MonoBehaviour
             itemCount = value;
         }
     }
-    [SerializeProperty("ItemTemplate")]
-    public ItemTemplate itemTemplate;
+    [SerializeField]
+    private ItemTemplate itemTemplate;
 
     public ItemTemplate ItemTemplate
     {
@@ -39,10 +39,9 @@ public class Item : MonoBehaviour
             itemTemplate = value;
             //update
             Debug.Log("item changed for something else");
-            if(icon)
-            {
-                RefreshItem();
-            }
+            
+            RefreshItem();
+            
         }
     }
 
@@ -63,12 +62,7 @@ public class Item : MonoBehaviour
     {
         slotsInUse = new List<Slot>();
         previousSlots = new List<Slot>();
-        boxcollider = GetComponent<BoxCollider2D>();
-        icon = GetComponent<Image>();
-        if(ItemTemplate)
-        {
-            RefreshItem();
-        }
+        RefreshItem();
     }
 
     private void Update()
@@ -93,7 +87,9 @@ public class Item : MonoBehaviour
     public void RefreshItem()
     {
         // get all the values when the item is change
-        
+        boxcollider = GetComponent<BoxCollider2D>();
+        icon = GetComponent<Image>();
+
         icon.sprite = ItemTemplate.icon;
         //new size
         width = 100 * ItemTemplate.columns;
@@ -110,7 +106,6 @@ public class Item : MonoBehaviour
     {
         if(collision.tag == "Slot")
         {
-            Debug.Log("new Collision");
             slotsInUse.Add(collision.transform.parent.GetComponent<Slot>());
         }
     }
@@ -118,20 +113,17 @@ public class Item : MonoBehaviour
     {
         if (collision.tag == "Slot")
         {
-            Debug.Log("leave Collision");
             slotsInUse.Remove(collision.transform.parent.GetComponent<Slot>());
         }
     }
 
     public void onClickEventStart()
     {
-        Debug.Log("clicked");
         dragging = true;
     }
 
     public void onClickEventEnd()
     {
-        Debug.Log("Stop click");
         dragging = false;
         //check if it can be added to the current slots
         if(slotsInUse.Count == numberOfSlots)
@@ -159,7 +151,7 @@ public class Item : MonoBehaviour
     }
     public void GoBackToPreviousPosition()
     {
-        if(previousSlots.Count>1)
+        if(previousSlots.Count>0)
         {
             SetPositionWithSlots(previousSlots);
         }
@@ -173,7 +165,6 @@ public class Item : MonoBehaviour
                 Vector3 newPos = new Vector3(slot.transform.position.x + (width * 0.2f), slot.transform.position.y - (height * 0.2f), 0.0f);
                 
                 transform.position = newPos;
-                Debug.Log("width " + width + ", height: " + height);
             }
         }
     }
@@ -189,7 +180,7 @@ public class Item : MonoBehaviour
     }
     private void AddToBag()
     {
-        slotsInUse[0].bag.AddNewItem(this);
+        //slotsInUse[0].bag.AddNewItem(this);
         SetNewSlots();
         SetPositionWithSlots(slotsInUse);
     }
@@ -197,7 +188,7 @@ public class Item : MonoBehaviour
     {
         if(previousSlots.Count>1)
         {
-            previousSlots[0].bag.DeleteFromlist(this);
+            //previousSlots[0].bag.DeleteFromlist(this);
         }
     }
     private void SetNewSlots()

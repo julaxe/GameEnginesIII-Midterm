@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6045598871784917523}
   - component: {fileID: 7873969787006632214}
   m_Layer: 5
-  m_Name: Item
+  m_Name: Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 200}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6045598871784917520
 CanvasRenderer:
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -100172265105342685, guid: 0657a0b2892d4cf49b09e2fec63a8531, type: 3}
+  m_Sprite: {fileID: -1686543816739758948, guid: 0657a0b2892d4cf49b09e2fec63a8531, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -91,9 +91,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aafab284c849d58429c0f7ed9551dbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCount: 0
-  item: {fileID: 11400000, guid: d1cfec75f4f86954b92a563fe5933e5b, type: 2}
+  itemCount: 1
+  itemTemplate: {fileID: 11400000, guid: 32277c07679921e4093ffce267ad8942, type: 2}
   slotsInUse: []
+  previousSlots: []
 --- !u!50 &6045598871784917522
 Rigidbody2D:
   serializedVersion: 4
@@ -139,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 100, y: 200}
+  m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
 --- !u!114 &7873969787006632214
 MonoBehaviour:
@@ -154,17 +155,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
   - eventID: 2
     callback:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 6045598871784917525}
-          m_TargetAssemblyTypeName: ItemSlot, Assembly-CSharp
-          m_MethodName: onClickEvent
+          m_TargetAssemblyTypeName: Item, Assembly-CSharp
+          m_MethodName: onClickEventStart
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6045598871784917525}
+          m_TargetAssemblyTypeName: Item, Assembly-CSharp
+          m_MethodName: onClickEventEnd
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
