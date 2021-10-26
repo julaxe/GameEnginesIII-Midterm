@@ -12,13 +12,11 @@ public class Item : MonoBehaviour
     private int itemCount = 0;
     public int ItemCount //getter ans setter for itemCount
     {
-        get
-        {
-            return itemCount;
-        }
+        get{return itemCount;}
         set
         {
             itemCount = value;
+            text.text = itemCount.ToString();
         }
     }
     [SerializeField]
@@ -26,10 +24,7 @@ public class Item : MonoBehaviour
 
     public ItemTemplate ItemTemplate
     {
-        get
-        {
-            return itemTemplate;
-        }
+        get { return itemTemplate; }
         set
         {
             if(itemTemplate == value)
@@ -46,22 +41,28 @@ public class Item : MonoBehaviour
     }
 
     private Image icon;
+    private TMPro.TextMeshProUGUI text;
     private BoxCollider2D boxcollider;
 
 
     private int numberOfSlots;
-    public List<Slot> slotsInUse;
+    public List<SlotNode> slotNodes = new List<SlotNode>(); //for the bag
+    public List<Slot> slotsInUse = new List<Slot>();
     [SerializeField]
-    private List<Slot> previousSlots;
+    private List<Slot> previousSlots = new List<Slot>();
 
+    private Bag bag;
+    public Bag Bag
+    {
+        get { return bag; }
+        set { bag = value; }
+    }
     private float width;
     private float height;
     private bool dragging =false;
 
     void Start()
     {
-        slotsInUse = new List<Slot>();
-        previousSlots = new List<Slot>();
         RefreshItem();
     }
 
@@ -89,6 +90,7 @@ public class Item : MonoBehaviour
         // get all the values when the item is change
         boxcollider = GetComponent<BoxCollider2D>();
         icon = GetComponent<Image>();
+        text = transform.Find("ItemCount").GetComponent<TMPro.TextMeshProUGUI>();
 
         icon.sprite = ItemTemplate.icon;
         //new size
@@ -97,25 +99,13 @@ public class Item : MonoBehaviour
         icon.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
         icon.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         boxcollider.size = new Vector2(width - 20, height - 20);
+        text.text = ItemCount.ToString();
 
         numberOfSlots = ItemTemplate.columns * ItemTemplate.rows;
         
     }
   
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Slot")
-        {
-            slotsInUse.Add(collision.transform.parent.GetComponent<Slot>());
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Slot")
-        {
-            slotsInUse.Remove(collision.transform.parent.GetComponent<Slot>());
-        }
-    }
+    
 
     public void onClickEventStart()
     {
@@ -140,9 +130,16 @@ public class Item : MonoBehaviour
             }
             //if I'm here it means that the slots are available, so set the item.
             //also get the min,max for rows and columns.
-            DeleteOldBag();
-            ClearPreviousSlots();
-            AddToBag();
+            //add to bag and delete from old bag
+            if(previousSlots[0].Bag != slotsInUse[0].Bag)
+            {
+                //we have to change bag.
+                previousSlots[0].Bag.DeleteFromlist(this.gameObject);
+                slotsInUse[0].Bag.AddItemToList(this.gameObject);
+            }
+
+            //set the new slots
+            SetNewSlots();
         }
         else
         {
@@ -162,7 +159,7 @@ public class Item : MonoBehaviour
         {
             if (slot.Root)
             {
-                Vector3 newPos = new Vector3(slot.transform.position.x + (width * 0.2f), slot.transform.position.y - (height * 0.2f), 0.0f);
+                Vector3 newPos = new Vector3(slot.transform.position.x + (width * 0.18f), slot.transform.position.y - (height * 0.18f), 0.0f);
                 
                 transform.position = newPos;
             }
@@ -173,16 +170,13 @@ public class Item : MonoBehaviour
         foreach(Slot slot in previousSlots)
         {
             slot.Root = false;
-            slot.Tail = false;
             slot.Item = null;
         }
         previousSlots.Clear();
     }
     private void AddToBag()
     {
-        //slotsInUse[0].bag.AddNewItem(this);
         SetNewSlots();
-        SetPositionWithSlots(slotsInUse);
     }
     private void DeleteOldBag()
     {
@@ -191,32 +185,31 @@ public class Item : MonoBehaviour
             //previousSlots[0].bag.DeleteFromlist(this);
         }
     }
+    public void SetSlotsInUse(List<Slot> newSlotsInUse)
+    {
+        slotsInUse = newSlotsInUse;
+        SetNewSlots();
+    }
     private void SetNewSlots()
     {
+        ClearPreviousSlots();
         int minRow = slotsInUse[0].row;
-        int maxRow = slotsInUse[0].row;
         int minCol = slotsInUse[0].column;
-        int maxCol = slotsInUse[0].column;
+
+        slotNodes.Clear();
         foreach (Slot slot in slotsInUse)
         {
             if (slot.row < minRow)
             {
                 minRow = slot.row;
             }
-            if (slot.row > maxRow)
-            {
-                maxRow = slot.row;
-            }
             if (slot.column < minCol)
             {
                 minCol = slot.column;
             }
-            if (slot.column > maxCol)
-            {
-                maxCol = slot.column;
-            }
             slot.Item = this;
             previousSlots.Add(slot);
+            slotNodes.Add(new SlotNode(slot.column, slot.row, this.gameObject));
         }
         foreach (Slot slot in slotsInUse)
         {
@@ -224,12 +217,24 @@ public class Item : MonoBehaviour
             {
                 //he is the root.
                 slot.Root = true;
+                break;
             }
-            if (slot.row == maxRow && slot.column == maxCol)
-            {
-                //he is the tail
-                slot.Tail = true;
-            }
+        }
+        SetPositionWithSlots(slotsInUse);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Slot")
+        {
+            if(!slotsInUse.Contains(collision.transform.parent.GetComponent<Slot>()))
+                slotsInUse.Add(collision.transform.parent.GetComponent<Slot>());
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Slot")
+        {
+            slotsInUse.Remove(collision.transform.parent.GetComponent<Slot>());
         }
     }
 }

@@ -2,18 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+public class Node
+{
+    public int row;
+    public int column;
+    public bool inUse;
+    public bool root;
+}
 
 public class Slot : MonoBehaviour
 {
- 
-    [SerializeField]
-    private TMPro.TextMeshProUGUI itemCountText;
 
     [SerializeProperty("Item")]
     private Item itemInSlot = null;
 
-    public Bag bag;
+    private Bag bag;
+    public Bag Bag
+    {
+        get { return bag; }
+        set { bag = value; }
+    }
    
     public Item Item
     {
@@ -49,27 +57,6 @@ public class Slot : MonoBehaviour
             root = value;
         }
     }
-    private bool tail;
-    public bool Tail
-    {
-        get
-        {
-            return tail;
-        }
-        set
-        {
-            if (tail == value)
-            {
-                return;
-            }
-            tail = value;
-            //refresh text
-            if(tail)
-            {
-                RefreshNumberOfItems();
-            }
-        }
-    }
 
     private GameObject cllider;
 
@@ -79,32 +66,13 @@ public class Slot : MonoBehaviour
 
 
     private void Start()
-    {
-        itemCountText = transform.Find("ItemCount").GetComponent<TMPro.TextMeshProUGUI>();
-        //this is just for debuggin purposes.
-        cllider = transform.Find("CollisionBox").gameObject;
+    {      
         RefreshItem();
-
-    }
-    public void RefreshNumberOfItems()
-    {
-        if(tail)
-        {
-            if (itemInSlot != null) // If an item is present
-            {
-                //update text
-                itemCountText.text = Item.ItemCount.ToString();
-            }
-        }
-        else
-        {
-            itemCountText.text = "";
-        }
     }
 
     public void RefreshItem()
     {
-        RefreshNumberOfItems();
+        cllider = transform.Find("CollisionBox").gameObject;
         if (!itemInSlot)
        {
             cllider.GetComponent<Image>().color = new Color(0.8584906f, 0.8584906f, 0.8584906f, 0.8117647f);

@@ -29,6 +29,9 @@ public class Inventory : MonoBehaviour
     {
        // if (collision.gameObject.tag == "Container")
         {
+            //set the current bag of the container first
+            Bag currentBag = collision.transform.GetComponentInParent<Bag>();
+            containerCanvas.GetComponentInParent<ItemSlotGridDimensioner>().SetCurrentBag(currentBag);
             OpenContainer();
         }
     }
@@ -36,6 +39,7 @@ public class Inventory : MonoBehaviour
     {
       //  if (collision.gameObject.tag == "Container")
         {
+
             CloseContainer();
         }
     }
