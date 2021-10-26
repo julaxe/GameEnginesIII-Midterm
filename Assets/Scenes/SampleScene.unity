@@ -399,7 +399,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfItems: []
   swords: 0
-  potions: 0
+  potions: 5
   shields: 0
 --- !u!1 &850189169 stripped
 GameObject:
@@ -688,7 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listOfItems: []
   swords: 0
-  potions: 0
+  potions: 12
   shields: 0
 --- !u!224 &1719960915 stripped
 RectTransform:

@@ -7,9 +7,7 @@ using UnityEngine.UI;
 // Display item in the slot, update image, make clickable when there is an item, invisible when there is not
 public class Item : MonoBehaviour
 {
-
-    [SerializeField]
-    private int itemCount = 0;
+    private int itemCount = 1;
     public int ItemCount //getter ans setter for itemCount
     {
         get{return itemCount;}
@@ -51,12 +49,7 @@ public class Item : MonoBehaviour
     [SerializeField]
     private List<Slot> previousSlots = new List<Slot>();
 
-    private Bag bag;
-    public Bag Bag
-    {
-        get { return bag; }
-        set { bag = value; }
-    }
+   
     private float width;
     private float height;
     private bool dragging =false;
@@ -115,11 +108,34 @@ public class Item : MonoBehaviour
     public void onClickEventEnd()
     {
         dragging = false;
+        
         //check if it can be added to the current slots
         if(slotsInUse.Count == numberOfSlots)
         {
+            //check if the item is consumable
+            if (itemTemplate.isConsumable)
+            {
+                //we check if we are changing bags
+                if (previousSlots[0].Bag != slotsInUse[0].Bag)
+                {
+                    //we check if the new bag has the same type of item
+                    foreach (GameObject item in slotsInUse[0].Bag.listOfItems)
+                    {
+                        if (item.GetComponent<Item>().ItemTemplate == itemTemplate)
+                        {
+                            //we change add the items and change the bags
+                            item.GetComponent<Item>().ItemCount += itemCount;
+                            previousSlots[0].Bag.DeleteFromlist(this.gameObject);
+                            ClearPreviousSlots();
+                            Destroy(this.gameObject);
+                            return;
+                        }
+                    }
+                    //this means that there is no similar item in the new bag so we just add it
+                }
+            }
             //same amount of slots, now check if they are available.
-            foreach(Slot slot in slotsInUse)
+            foreach (Slot slot in slotsInUse)
             {
                 //check if the slot doesn't have an item, and if it has, check that is not being use by this item.
                 if(slot.Item != null && !previousSlots.Find(x => x == slot))

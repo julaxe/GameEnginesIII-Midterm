@@ -46,13 +46,14 @@ public class Bag : MonoBehaviour
         itemPrefab = Resources.Load<GameObject>("Prefabs/Item");
         ItemsLocation = GameObject.Find("Canvas/Items").transform;
 
-        for(int i = 0; i < swords; i++)
+        
+        for (int i = 0; i < swords; i++)
         {
             AddASword();
         }
-        for (int i = 0; i < potions; i++)
+        if(potions > 0)
         {
-            AddAPotion();
+            AddPotions();
         }
         for (int i = 0; i < shields; i++)
         {
@@ -69,10 +70,11 @@ public class Bag : MonoBehaviour
         sword.GetComponent<Item>().ItemTemplate = Resources.Load<ItemTemplate>("Items/Sword");
         AddAnItemToTheBagViaCode(sword);
     }
-    private void AddAPotion()
+    private void AddPotions()
     {
         GameObject potion = Instantiate(itemPrefab, ItemsLocation);
         potion.GetComponent<Item>().ItemTemplate = Resources.Load<ItemTemplate>("Items/Round Potion");
+        potion.GetComponent<Item>().ItemCount = potions;
         AddAnItemToTheBagViaCode(potion);
     }
     private void AddAShield()
@@ -102,7 +104,6 @@ public class Bag : MonoBehaviour
     {
         //the item is already created
         //First I need to know if there is space in the grid.
-        item.GetComponent<Item>().Bag = this;
         int ItemRows = item.GetComponent<Item>().ItemTemplate.rows;
         int ItemColumns = item.GetComponent<Item>().ItemTemplate.columns;
         SlotNode availableNode = null;
