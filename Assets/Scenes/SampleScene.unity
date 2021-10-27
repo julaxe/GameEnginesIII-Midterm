@@ -205,43 +205,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &104002030 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5395119485825406440, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
-  m_PrefabInstance: {fileID: 5395119485426344348}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &104002034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104002030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b91048d07029d4baa601862375f186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemSlotPrefab: {fileID: 9065499456974609210, guid: 7d0c280c18fc7f44d993301e547d625c, type: 3}
-  GridDimensions: {x: 5, y: 5}
-  currentBag: {fileID: 850189173}
---- !u!1 &322489123 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3272399871756723923, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-  m_PrefabInstance: {fileID: 3749347835164774866}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &322489125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322489123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2ad2ef1ad82c846b616ad1db91de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &431729389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -398,9 +361,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  swords: 0
-  potions: 5
-  shields: 0
+  itemsTemplates:
+  - Template: {fileID: 11400000, guid: d1cfec75f4f86954b92a563fe5933e5b, type: 2}
+    Count: 3
+  - Template: {fileID: 11400000, guid: 32277c07679921e4093ffce267ad8942, type: 2}
+    Count: 5
 --- !u!1 &850189169 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7597288296595587313, guid: 52c108130103e8443a767caaa11989f0, type: 3}
@@ -419,46 +384,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  swords: 1
-  potions: 10
-  shields: 1
---- !u!1 &1071500309 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3749347835609666688, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-  m_PrefabInstance: {fileID: 3749347835164774866}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1071500312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1071500309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98b91048d07029d4baa601862375f186, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemSlotPrefab: {fileID: 9065499456974609210, guid: 7d0c280c18fc7f44d993301e547d625c, type: 3}
-  GridDimensions: {x: 5, y: 5}
-  currentBag: {fileID: 835317700}
+  itemsTemplates:
+  - Template: {fileID: 11400000, guid: 134b977f822d05e4ea7e2e7dae0d5d8d, type: 2}
+    Count: 1
 --- !u!1 &1106324145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5395119485459324790, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
   m_PrefabInstance: {fileID: 5395119485426344348}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1106324147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106324145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2ad2ef1ad82c846b616ad1db91de36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1112465170
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,9 +516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  swords: 0
-  potions: 0
-  shields: 0
+  itemsTemplates: []
 --- !u!1 &1640828187
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,9 +618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  swords: 0
-  potions: 12
-  shields: 0
+  itemsTemplates: []
 --- !u!224 &1719960915 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3749347835609666689, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
@@ -865,34 +794,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3430989149039464573}
     m_Modifications:
-    - target: {fileID: 1987505316367530647, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -6.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987505316367530647, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 47.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987505316650003468, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 96
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987505316650003468, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 96
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987505316650003468, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 82.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987505316650003468, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1987505316650003469, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_IsOn
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 1071500312, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
+      propertyPath: currentBag
+      value: 
+      objectReference: {fileID: 835317700}
     - target: {fileID: 3272399871756723920, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -900,18 +805,6 @@ PrefabInstance:
     - target: {fileID: 3272399871756723920, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3272399871756723921, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3272399871756723923, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_Name
-      value: InventoryBackground
-      objectReference: {fileID: 0}
-    - target: {fileID: 3272399871756723923, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3749347835609666688, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
       propertyPath: m_Name
@@ -1010,6 +903,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3430989149039464573}
     m_Modifications:
+    - target: {fileID: 104002034, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
+      propertyPath: currentBag
+      value: 
+      objectReference: {fileID: 850189173}
     - target: {fileID: 5395119484665452974, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
       propertyPath: m_Name
       value: ContainerCanvas
@@ -1097,14 +994,6 @@ PrefabInstance:
     - target: {fileID: 5395119484665452975, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5395119485459324784, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
-      propertyPath: m_StartAxis
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5395119485459324790, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
-      propertyPath: m_Name
-      value: InventoryBackground
       objectReference: {fileID: 0}
     - target: {fileID: 5395119485459324791, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
       propertyPath: m_SizeDelta.x

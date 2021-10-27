@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class GenerateItem
+{
+    public ItemTemplate Template;
+    public int Count;
+}
 public class SlotNode
 {
     public SlotNode(int column, int row, GameObject item = null)
@@ -23,13 +29,10 @@ public class Bag : MonoBehaviour
     private GameObject itemPrefab;
     private Transform ItemsLocation;
 
-    //amount of items in the bag when it's created
-    public int swords = 0;
-    public int potions = 0;
-    public int shields = 0;
-
     private int rows = 5;
     private int columns = 5;
+
+    public List<GenerateItem> itemsTemplates;
 
     void Start()
     {
@@ -46,42 +49,39 @@ public class Bag : MonoBehaviour
         itemPrefab = Resources.Load<GameObject>("Prefabs/Item");
         ItemsLocation = GameObject.Find("Canvas/Items").transform;
 
-        
-        for (int i = 0; i < swords; i++)
+        foreach(GenerateItem template in itemsTemplates)
         {
-            AddASword();
-        }
-        if(potions > 0)
-        {
-            AddPotions();
-        }
-        for (int i = 0; i < shields; i++)
-        {
-            AddAShield();
+            if(template.Template.isConsumable)
+            {
+                //Add consumable item
+                AddConsumable(template);
+            }
+            else
+            {
+                //Add No consumable item
+                for (int i = 0; i < template.Count; i++)
+                {
+                    AddNoConsumable(template);
+                }
+            }
         }
 
         HideItems();
 
     }
     // Update is called once per frame
-    private void AddASword()
+    private void AddConsumable(GenerateItem template)
     {
-        GameObject sword = Instantiate(itemPrefab, ItemsLocation);
-        sword.GetComponent<Item>().ItemTemplate = Resources.Load<ItemTemplate>("Items/Sword");
-        AddAnItemToTheBagViaCode(sword);
+        GameObject item = Instantiate(itemPrefab, ItemsLocation);
+        item.GetComponent<Item>().ItemTemplate = template.Template;
+        item.GetComponent<Item>().ItemCount = template.Count;
+        AddAnItemToTheBagViaCode(item);
     }
-    private void AddPotions()
+    private void AddNoConsumable(GenerateItem template)
     {
-        GameObject potion = Instantiate(itemPrefab, ItemsLocation);
-        potion.GetComponent<Item>().ItemTemplate = Resources.Load<ItemTemplate>("Items/Round Potion");
-        potion.GetComponent<Item>().ItemCount = potions;
-        AddAnItemToTheBagViaCode(potion);
-    }
-    private void AddAShield()
-    {
-        GameObject shield = Instantiate(itemPrefab, ItemsLocation);
-        shield.GetComponent<Item>().ItemTemplate = Resources.Load<ItemTemplate>("Items/Shield");
-        AddAnItemToTheBagViaCode(shield);
+        GameObject item = Instantiate(itemPrefab, ItemsLocation);
+        item.GetComponent<Item>().ItemTemplate = template.Template;
+        AddAnItemToTheBagViaCode(item);
     }
 
     public void HideItems()

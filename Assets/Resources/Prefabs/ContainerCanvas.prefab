@@ -279,8 +279,9 @@ GameObject:
   - component: {fileID: 5395119485459324785}
   - component: {fileID: 5395119485459324784}
   - component: {fileID: 5395119485459324780}
+  - component: {fileID: 1106324147}
   m_Layer: 5
-  m_Name: InventoryBackgroundContainer
+  m_Name: InventoryBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,7 +364,7 @@ MonoBehaviour:
     m_Bottom: 26
   m_ChildAlignment: 0
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 96, y: 96}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
@@ -382,6 +383,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &1106324147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395119485459324790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2ad2ef1ad82c846b616ad1db91de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5395119485825406440
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +406,7 @@ GameObject:
   - component: {fileID: 5395119485825406441}
   - component: {fileID: 5395119485825406443}
   - component: {fileID: 5395119485825406442}
+  - component: {fileID: 104002034}
   m_Layer: 5
   m_Name: ContainerUI
   m_TagString: Untagged
@@ -459,3 +473,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &104002034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395119485825406440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b91048d07029d4baa601862375f186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSlotPrefab: {fileID: 9065499456974609210, guid: 7d0c280c18fc7f44d993301e547d625c, type: 3}
+  GridDimensions: {x: 5, y: 5}
+  currentBag: {fileID: 0}
