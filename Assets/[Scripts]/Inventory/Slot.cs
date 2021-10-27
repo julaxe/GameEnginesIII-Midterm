@@ -13,7 +13,6 @@ public class Node
 public class Slot : MonoBehaviour
 {
 
-    [SerializeProperty("Item")]
     private Item itemInSlot = null;
 
     private Bag bag;
@@ -25,10 +24,7 @@ public class Slot : MonoBehaviour
    
     public Item Item
     {
-        get
-        {
-            return itemInSlot;
-        }
+        get{ return itemInSlot;}
         set
         {
             if(itemInSlot == value)
@@ -36,18 +32,13 @@ public class Slot : MonoBehaviour
                 return;
             }
             itemInSlot = value;
-            Debug.Log("item Changed");
             RefreshItem();
-
         }
     }
     private bool root;
     public bool Root
     {
-        get
-        {
-            return root;
-        }
+        get{return root;}
         set
         {
             if (root == value)
@@ -57,7 +48,7 @@ public class Slot : MonoBehaviour
             root = value;
         }
     }
-
+    //collider of the slots
     private GameObject cllider;
 
     //possition in the grid

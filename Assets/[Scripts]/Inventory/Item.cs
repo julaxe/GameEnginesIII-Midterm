@@ -29,12 +29,8 @@ public class Item : MonoBehaviour
             {
                 return;
             }
-            itemTemplate = value;
-            //update
-            Debug.Log("item changed for something else");
-            
+            itemTemplate = value;           
             RefreshItem();
-            
         }
     }
 
@@ -175,7 +171,7 @@ public class Item : MonoBehaviour
         {
             if (slot.Root)
             {
-                Vector3 newPos = new Vector3(slot.transform.position.x + (width * 0.18f), slot.transform.position.y - (height * 0.18f), 0.0f);
+                Vector3 newPos = new Vector3(slot.transform.position.x + (width* 0.5f), slot.transform.position.y - (height * 0.5f), 0.0f);
                 
                 transform.position = newPos;
             }

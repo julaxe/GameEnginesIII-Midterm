@@ -157,6 +157,7 @@ public class Bag : MonoBehaviour
         else
         {
             Debug.Log("There is no space in the bag for another Item");
+            Destroy(item);
         }
     }
     public void AddNewItemInFreeSpace(GameObject item, SlotNode root)
@@ -180,18 +181,9 @@ public class Bag : MonoBehaviour
     public void DeleteFromlist(GameObject item)
     {
         listOfItems.Remove(item);
-        RefreshList();
     }
     public void AddItemToList(GameObject item)
     {
         listOfItems.Add(item);
-        RefreshList();
-    }
-    public void RefreshList()
-    {
-        foreach(GameObject item in listOfItems)
-        {
-            //item.GoBackToPreviousPosition();
-        }
     }
 }

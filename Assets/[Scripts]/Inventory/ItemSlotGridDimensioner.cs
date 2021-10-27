@@ -15,10 +15,20 @@ public class ItemSlotGridDimensioner : MonoBehaviour
     private int rows;
     private int columns;
 
+    public enum TypeOfBag { Other, PlayerBag };
+
+    [SerializeField]
+    private TypeOfBag typeOfBag;
+
     //connections with another bags.
     public Bag currentBag;
     private void Start()
     {
+        if(typeOfBag == TypeOfBag.PlayerBag)
+        {
+            currentBag = GameObject.Find("PlayerCharacter").GetComponent<Bag>();
+        }
+
         int numCells = GridDimensions.x * GridDimensions.y;
         rows = GridDimensions.y;
         columns = GridDimensions.x;
@@ -34,8 +44,6 @@ public class ItemSlotGridDimensioner : MonoBehaviour
                 listSlots[i, j].GetComponent<Slot>().row = j;
             }
         }
-
-        transform.Find("InventoryBackground/Items").SetAsLastSibling();
 
     }
 
@@ -76,10 +84,6 @@ public class ItemSlotGridDimensioner : MonoBehaviour
                 listSlots[i, j].GetComponent<Slot>().Bag = currentBag;
             }
         }
-    }
-
-    private void OnEnable()
-    {
     }
 
 }
