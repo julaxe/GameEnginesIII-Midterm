@@ -300,7 +300,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52c108130103e8443a767caaa11989f0, type: 3}
 --- !u!1001 &700100932
 PrefabInstance:
@@ -377,7 +378,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 52c108130103e8443a767caaa11989f0, type: 3}
 --- !u!1 &835317693 stripped
 GameObject:
@@ -401,7 +403,9 @@ MonoBehaviour:
   columns: 5
   initialItems:
   - Template: {fileID: 11400000, guid: 134b977f822d05e4ea7e2e7dae0d5d8d, type: 2}
-    Count: 2
+    Count: 1
+  - Template: {fileID: 11400000, guid: 32277c07679921e4093ffce267ad8942, type: 2}
+    Count: 10
 --- !u!1 &1106324145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5395119485459324790, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
@@ -531,9 +535,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  rows: 5
-  columns: 5
-  initialItems: []
+  rows: 7
+  columns: 7
+  initialItems:
+  - Template: {fileID: 11400000, guid: 32277c07679921e4093ffce267ad8942, type: 2}
+    Count: 20
+  - Template: {fileID: 11400000, guid: d1cfec75f4f86954b92a563fe5933e5b, type: 2}
+    Count: 1
 --- !u!1 &1640828187
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +645,9 @@ MonoBehaviour:
   listOfItems: []
   rows: 5
   columns: 5
-  initialItems: []
+  initialItems:
+  - Template: {fileID: 11400000, guid: 32277c07679921e4093ffce267ad8942, type: 2}
+    Count: 5
 --- !u!224 &1719960915 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3749347835609666689, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
@@ -1050,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
       propertyPath: initialItems.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
       propertyPath: itemsTemplates.Array.size
@@ -1061,6 +1071,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: initialItems.Array.data[1].Count
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
       propertyPath: itemsTemplates.Array.data[1].Count
       value: 1
       objectReference: {fileID: 0}
@@ -1068,6 +1082,10 @@ PrefabInstance:
       propertyPath: initialItems.Array.data[0].Template
       value: 
       objectReference: {fileID: 11400000, guid: 88bf03183c729614bba97e3348c75126, type: 2}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: initialItems.Array.data[1].Template
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d88b3b5136783c4e8695e41b3d31d14, type: 2}
     - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
       propertyPath: itemsTemplates.Array.data[1].Template
       value: 

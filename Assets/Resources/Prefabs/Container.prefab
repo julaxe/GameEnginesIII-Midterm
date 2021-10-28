@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7597288296595587318}
   - component: {fileID: 7597288296595587319}
   - component: {fileID: 7597288296595587312}
-  - component: {fileID: 850189173}
+  - component: {fileID: 1595067738}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -111,7 +111,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2332133, y: 0.12163067}
   m_EdgeRadius: 0
---- !u!114 &850189173
+--- !u!114 &1595067738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,8 +124,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  itemsTemplates:
-  - Template: {fileID: 11400000, guid: 134b977f822d05e4ea7e2e7dae0d5d8d, type: 2}
+  rows: 2
+  columns: 2
+  initialItems:
+  - Template: {fileID: 11400000, guid: 32277c07679921e4093ffce267ad8942, type: 2}
+    Count: 20
+  - Template: {fileID: 11400000, guid: d1cfec75f4f86954b92a563fe5933e5b, type: 2}
     Count: 1
 --- !u!1 &7597288297986586864
 GameObject:
@@ -201,7 +205,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 0.9546068, b: 0, a: 0.45882353}
+  m_Color: {r: 0, g: 0.3260727, b: 1, a: 0.45882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
