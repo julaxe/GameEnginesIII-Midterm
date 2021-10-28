@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
             text.text = itemCount.ToString();
         }
     }
-    [SerializeField]
+
     private ItemTemplate itemTemplate;
 
     public ItemTemplate ItemTemplate
@@ -40,15 +40,14 @@ public class Item : MonoBehaviour
 
 
     private int numberOfSlots;
-    public List<SlotNode> slotNodes = new List<SlotNode>(); //for the bag
-    public List<Slot> slotsInUse = new List<Slot>();
-    [SerializeField]
     private List<Slot> previousSlots = new List<Slot>();
 
-   
     private float width;
     private float height;
     private bool dragging =false;
+
+    public List<SlotNode> slotNodes = new List<SlotNode>(); //for the bag
+    public List<Slot> slotsInUse = new List<Slot>();
 
     void Start()
     {

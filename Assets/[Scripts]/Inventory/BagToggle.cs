@@ -10,8 +10,7 @@ public class BagToggle : MonoBehaviour
 
     private void OnEnable()
     {
-       
-        coroutine = WaitAndLoad(0.05f); // wait a little bit so we can get the grid loaded
+        coroutine = WaitAndLoad(0.01f); // wait a little bit so we can get the grid loaded
         grid = gameObject.GetComponentInParent<ItemSlotGridDimensioner>();
         StartCoroutine(coroutine);
     }

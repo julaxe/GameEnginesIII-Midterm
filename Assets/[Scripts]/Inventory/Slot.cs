@@ -4,17 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Node
 {
-    public int row;
     public int column;
+    public int row;
     public bool inUse;
     public bool root;
 }
 
 public class Slot : MonoBehaviour
 {
-
-    private Item itemInSlot = null;
-
     private Bag bag;
     public Bag Bag
     {
@@ -22,6 +19,7 @@ public class Slot : MonoBehaviour
         set { bag = value; }
     }
    
+    private Item itemInSlot = null;
     public Item Item
     {
         get{ return itemInSlot;}
@@ -48,12 +46,13 @@ public class Slot : MonoBehaviour
             root = value;
         }
     }
+
     //collider of the slots
     private GameObject cllider;
 
     //possition in the grid
-    public int row;
     public int column;
+    public int row;
 
 
     private void Start()

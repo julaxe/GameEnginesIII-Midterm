@@ -29,10 +29,10 @@ public class Bag : MonoBehaviour
     private GameObject itemPrefab;
     private Transform ItemsLocation;
 
-    private int rows = 5;
-    private int columns = 5;
-
-    public List<GenerateItem> itemsTemplates;
+    [Header("Initial Values")]
+    public int rows = 5;
+    public int columns = 5;
+    public List<GenerateItem> initialItems;
 
     void Start()
     {
@@ -49,19 +49,19 @@ public class Bag : MonoBehaviour
         itemPrefab = Resources.Load<GameObject>("Prefabs/Item");
         ItemsLocation = GameObject.Find("Canvas/Items").transform;
 
-        foreach(GenerateItem template in itemsTemplates)
+        foreach(GenerateItem item in initialItems)
         {
-            if(template.Template.isConsumable)
+            if(item.Template.isConsumable)
             {
                 //Add consumable item
-                AddConsumable(template);
+                AddConsumable(item);
             }
             else
             {
                 //Add No consumable item
-                for (int i = 0; i < template.Count; i++)
+                for (int i = 0; i < item.Count; i++)
                 {
-                    AddNoConsumable(template);
+                    AddNoConsumable(item);
                 }
             }
         }

@@ -213,6 +213,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: rows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: columns
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
       propertyPath: itemsTemplates.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -301,6 +309,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: rows
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: columns
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7597288296595587313, guid: 52c108130103e8443a767caaa11989f0, type: 3}
       propertyPath: m_Name
       value: Container (2)
@@ -381,11 +397,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  itemsTemplates:
-  - Template: {fileID: 11400000, guid: d1cfec75f4f86954b92a563fe5933e5b, type: 2}
-    Count: 3
-  - Template: {fileID: 11400000, guid: 32277c07679921e4093ffce267ad8942, type: 2}
-    Count: 5
+  rows: 5
+  columns: 5
+  initialItems:
+  - Template: {fileID: 11400000, guid: 134b977f822d05e4ea7e2e7dae0d5d8d, type: 2}
+    Count: 2
 --- !u!1 &1106324145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5395119485459324790, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
@@ -515,7 +531,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  itemsTemplates: []
+  rows: 5
+  columns: 5
+  initialItems: []
 --- !u!1 &1640828187
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +635,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfItems: []
-  itemsTemplates: []
+  rows: 5
+  columns: 5
+  initialItems: []
 --- !u!224 &1719960915 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3749347835609666689, guid: 0b667c596ffa1b94ea20e868bf1c0298, type: 3}
@@ -907,6 +927,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3430989149039464573}
     m_Modifications:
+    - target: {fileID: 104002034, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
+      propertyPath: GridDimensions.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 104002034, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
+      propertyPath: GridDimensions.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5395119484665452974, guid: 5ca3bd1b1d0dce74fbcd548aab2af64c, type: 3}
       propertyPath: m_Name
       value: ContainerCanvas
@@ -1012,6 +1040,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: rows
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: columns
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: initialItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: itemsTemplates.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: initialItems.Array.data[0].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: itemsTemplates.Array.data[1].Count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: initialItems.Array.data[0].Template
+      value: 
+      objectReference: {fileID: 11400000, guid: 88bf03183c729614bba97e3348c75126, type: 2}
+    - target: {fileID: 850189173, guid: 52c108130103e8443a767caaa11989f0, type: 3}
+      propertyPath: itemsTemplates.Array.data[1].Template
+      value: 
+      objectReference: {fileID: 11400000, guid: 07e697c664bd5e14ea97db345647eec3, type: 2}
     - target: {fileID: 7597288296595587313, guid: 52c108130103e8443a767caaa11989f0, type: 3}
       propertyPath: m_Name
       value: Container
