@@ -1,0 +1,14 @@
+Player Experience:
+-Easy to use, just drag and drop. (if there is no space, it won't let the item go to another bag)
+-Being able to drag and drop items from your bag to another bag, also having consumable items and not consumable items.
+
+Features:
+-Easy to use.
+-Easy to create new Item. (show).
+-Easy to create a new bag (show).
+-Easy to edit a bag -> size and items.
+-Easy to access the items from the player perspective (list of items).
+
+-Show the package from 0. (so if you want to use this package)
+
+Explain how the code works.

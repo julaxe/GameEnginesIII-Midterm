@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338f75394b047f94c8b1d3e0ecc35512, type: 3}
   m_Name: HugeSword
   m_EditorClassIdentifier: 
-  name: Sword
-  description: Great for slicing watermelons and pumpkins
-  icon: {fileID: 8097262859823219351, guid: 0657a0b2892d4cf49b09e2fec63a8531, type: 3}
+  name: HugeSword
+  description: Great to slice big monsters
+  icon: {fileID: -100172265105342685, guid: 0657a0b2892d4cf49b09e2fec63a8531, type: 3}
   isConsumable: 0
-  columns: 1
-  rows: 3
+  columns: 3
+  rows: 4
